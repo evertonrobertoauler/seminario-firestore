@@ -1,7 +1,26 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title class="secondary">Formulario</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="secondary">Formulário</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content padding>
+  <ng-container *ngIf="valorAtual$ | async"></ng-container>
+  <form [formGroup]="formulario" (submit)="salvar()">
+    <ion-list>
+      <ion-item class="item-sem-borda">
+        <ion-label position="stacked"><b>Descrição da tarefa</b></ion-label>
+        <ion-input formControlName="descricao" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-button expand="block" type="submit">
+            <div>Salvar</div>
+          </ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>
