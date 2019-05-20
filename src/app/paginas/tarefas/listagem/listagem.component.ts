@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-listagem',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listagem.component.scss']
 })
 export class ListagemComponent implements OnInit {
+  constructor(private fireAuth: AngularFireAuth) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  async sair() {
+    await this.fireAuth.auth.signOut();
   }
-
 }
